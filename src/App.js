@@ -16,6 +16,7 @@ function App() {
     if (validateArr(storedMembers)) {
       dispatch({type: ActionTypes.SAVE_STORED_MEMBERS, payload: storedMembers})
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

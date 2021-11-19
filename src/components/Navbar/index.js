@@ -15,7 +15,7 @@ function classNames(...classes) {
 }
 
 const Navbar = () => {
-  const [ routesData, setRoutesData ] = useState(navigation);
+  const [ routesData ] = useState(navigation);
   const [ activeRoute, setActiveRoute ] = useState(navigation[0])
 
   const handleActiveRoute = currentRoute => {

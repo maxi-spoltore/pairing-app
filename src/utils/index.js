@@ -2,7 +2,7 @@ const shuffleArr = arr => {
   let currentIndex = arr.length;
   let randomIndex;
 
-  while (currentIndex != 0) {
+  while (currentIndex !== 0) {
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
 
