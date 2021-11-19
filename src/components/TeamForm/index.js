@@ -62,7 +62,7 @@ const TeamForm = () => {
           {members.map(member => {
             return (
               <div key={member.id} className='flex items-center bg-green-400 rounded-lg p-4 mb-4 transition-all'>
-                <li className='flex-1 text-2xl font-semibold capitalize tracking-wide'>
+                <li className='flex-1 text-2xl font-semibold capitalize tracking-wide overflow-hidden'>
                   <ContentEditable html={member.name} className='w-6/12' onChange={(e) => handleEditChange(e, member.id)} />
                 </li>
                 <IconButton 
