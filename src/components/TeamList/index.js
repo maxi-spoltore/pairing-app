@@ -5,8 +5,9 @@ import { Button } from "@chakra-ui/react"
 import ReactTooltip from 'react-tooltip'
 import { useTeamState } from '../TeamContext'
 import GoBack from '../GoBack'
+import WithTranslation from '../hocs/WithTranslation'
 
-const TeamList = ({render}) => {
+const TeamList = ({render, t}) => {
   const { members } = useTeamState()
   const [loading, setLoading] = useState(false);
   const [sortedMembers, setSortedMembers] = useState([]);
@@ -39,7 +40,7 @@ const TeamList = ({render}) => {
               isLoading={loading}
               colorScheme="green"
               width='300px'
-              data-tip="Debe haber al menos 2 personas anotadas."
+              data-tip={t('sortBtn.tooltipErrMsg')}
               onClick={handleSortMembers}
             >
             {sortError && (
@@ -49,7 +50,7 @@ const TeamList = ({render}) => {
                 effect="solid"
               />
             )}
-              {!!sortedMembers && !!sortedMembers.length ? 'Sortear otra vez' : 'Sortear'}
+              {!!sortedMembers && !!sortedMembers.length ? t('sortBtn.again') : t('sortBtn.init')}
             </Button>
           </div>
         </div>
@@ -58,4 +59,4 @@ const TeamList = ({render}) => {
   )
 }
 
-export default TeamList
+export default WithTranslation(TeamList)

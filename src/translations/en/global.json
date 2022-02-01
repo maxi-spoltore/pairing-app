@@ -1,0 +1,26 @@
+{
+	"nav": {
+		"home": "Home",
+		"pr-reviewers": "PR Reviewers",
+		"pair-programming": "Pair Programming"
+	},
+	"languageSelector": {
+		"language": "Language:"
+	},
+	"form": {
+		"mainInputMsg": "Add a team member:"
+	},
+	"goBack": {
+		"goBackMsg": "No team members added yet.",
+		"goBackBtn": "Add members"
+	},
+	"pageTitles": {
+		"pr-reviewers": "PR Reviewers",
+		"pair-programming": "Pair Programming"
+	},
+	"sortBtn": {
+		"init": "Sort",
+		"again": "Sort again",
+		"tooltipErrMsg": "There must be at least 2 team members added."
+	}
+}

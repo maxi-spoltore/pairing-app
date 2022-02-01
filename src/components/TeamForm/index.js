@@ -4,10 +4,11 @@ import { IconButton } from "@chakra-ui/react"
 import { XIcon } from '@heroicons/react/outline'
 import ContentEditable from 'react-contenteditable'
 import store from 'store'
+import WithTranslation from '../hocs/WithTranslation';
 import { useTeamState, useTeamDispatch, ActionTypes } from '../TeamContext'
 import { validateArr } from '../../utils'
 
-const TeamForm = () => {
+const TeamForm = ({ t }) => {
   const [inputValue, setInputValue] = useState('')
   const { members } = useTeamState()
   const dispatch = useTeamDispatch()
@@ -46,7 +47,7 @@ const TeamForm = () => {
     <div className='container w-10/12 md:w-5/12'>
       <div className='mt-4 md:mt-8 mb-6'>
         <label htmlFor='team' className='flex flex-col md:flex-row items-center'>
-          <span className='mr-2 md:text-lg'>Ingresá un miembro del equipo:</span>
+          <span className='mr-2 md:text-lg'>{t('form.mainInputMsg')}</span>
           <input 
             id='team' 
             type='text' 
@@ -83,4 +84,4 @@ const TeamForm = () => {
   )
 }
 
-export default TeamForm
+export default WithTranslation(TeamForm);

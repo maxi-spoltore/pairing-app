@@ -1,10 +1,11 @@
 import React from 'react'
 import TeamList from '../TeamList'
+import WithTranslation from '../hocs/WithTranslation'
 
-const PairProgramming = () => {
+const PairProgramming = ({ t }) => {
   return (
     <div>
-      <h3 className='text-2xl md:text-4xl font-bold w-7/12 ml-4 mt-4 md:mx-auto'>Pair Programming</h3>
+      <h3 className='text-2xl md:text-4xl font-bold w-7/12 ml-4 mt-4 md:mx-auto'>{t('pageTitles.pair-programming')}</h3>
       <TeamList 
         render={({ loading, members, sortedMembers, uuidv4 }) => (
           <>
@@ -47,4 +48,4 @@ const PairProgramming = () => {
   )
 }
 
-export default PairProgramming
+export default WithTranslation(PairProgramming)

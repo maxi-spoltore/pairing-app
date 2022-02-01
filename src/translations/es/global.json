@@ -1,0 +1,26 @@
+{
+	"nav": {
+		"home": "Inicio",
+		"pr-reviewers": "PRs Cruzados",
+		"pair-programming": "Pair Programming"
+	},
+	"languageSelector": {
+		"language": "Idioma:"
+	},
+	"form": {
+		"mainInputMsg": "Ingresá un miembro del equipo:"
+	},
+	"goBack": {
+		"goBackMsg": "Aún no hay ningún equipo añadido.",
+		"goBackBtn": "Agregar miembros"
+	},
+	"pageTitles": {
+		"pr-reviewers": "PRs Cruzados",
+		"pair-programming": "Pair Programming"
+	},
+	"sortBtn": {
+		"init": "Sortear",
+		"again": "Sortear otra vez",
+		"tooltipErrMsg": "Debe haber al menos 2 personas anotadas."
+	}
+}

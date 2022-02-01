@@ -1,10 +1,11 @@
 import React from 'react'
 import TeamList from '../TeamList'
+import WithTranslation from '../hocs/WithTranslation'
 
-const Reviewers = () => {
+const Reviewers = ({ t }) => {
   return (
     <div>
-      <h3 className='text-2xl md:text-4xl font-bold w-7/12 ml-4 mt-4 md:mx-auto'>PRs Cruzados</h3>
+      <h3 className='text-2xl md:text-4xl font-bold w-7/12 ml-4 mt-4 md:mx-auto'>{t('pageTitles.pr-reviewers')}</h3>
       <TeamList 
         render={({loading, members, sortedMembers, uuidv4}) => (
           <div className='w-10/12 md:w-4/12 grid grid-flow-col auto-cols-auto gap-6'>
@@ -41,4 +42,4 @@ const Reviewers = () => {
   )
 }
 
-export default Reviewers
+export default WithTranslation(Reviewers)

@@ -1,11 +1,12 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { Button } from '@chakra-ui/button'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from '@chakra-ui/button';
+import WithTranslation from '../hocs/WithTranslation';
 
-const GoBack = () => {
+const GoBack = ({ t }) => {
   return (
     <div className='mt-32 w-full flex flex-col items-center'>
-      <h3 className='mb-4 text-xl'>Aún no hay ningún equipo añadido.</h3>
+      <h3 className='mb-4 text-xl'>{t('goBack.goBackMsg')}</h3>
       <Link
         to='/'
       >
@@ -13,11 +14,11 @@ const GoBack = () => {
           colorScheme="green"
           width='300px'
         >
-          Agregar miembros
+          {t('goBack.goBackBtn')}
         </Button>
       </Link>
     </div>
   )
 }
 
-export default GoBack
+export default WithTranslation(GoBack)

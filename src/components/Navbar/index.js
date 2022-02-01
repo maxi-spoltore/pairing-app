@@ -1,20 +1,23 @@
 import React, { useState, useCallback } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Disclosure } from '@headlessui/react'
+import { Select } from '@chakra-ui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import Logo from '../Logo'
+import LanguageSelector from '../LanguageSelector'
+import WithTranslation from '../hocs/WithTranslation'
 
 const navigation = [
-  { id: 'home', name: 'Inicio', href: '/' },
-  { id: 'pr-reviewers', name: 'PRs Cruzados', href: '/pr-reviewers' },
-  { id: 'pair-programming', name: 'Pair Programming', href: '/pair-programming' }
+  { id: 'home', href: '/' },
+  { id: 'pr-reviewers', href: '/pr-reviewers' },
+  { id: 'pair-programming', href: '/pair-programming' }
 ]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const Navbar = () => {
+const Navbar = ({ t }) => {
   const [ routesData ] = useState(navigation);
   const [ activeRoute, setActiveRoute ] = useState(navigation[0])
 
@@ -48,11 +51,11 @@ const Navbar = () => {
                 <div className="flex-shrink-0 flex items-center">
                   <Logo />
                 </div>
-                <div className="flex items-center hidden sm:block sm:ml-8">
+                <div className="flex items-center hidden sm:block sm:ml-8 w-full">
                   <div className="flex items-center space-x-4">
-                    {navigation.map((item) => (
+                    {navigation.map((item, idx) => (
                       <NavLink
-                        key={item.name}
+                        key={`${item.name}-${idx}`}
                         to={item.href}
                         className={classNames(
                           isActive(item.id) ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
@@ -61,9 +64,12 @@ const Navbar = () => {
                         aria-current={isActive(item.id) ? 'page' : undefined}
                         onClick={() => handleActiveRoute(item.id)}
                       >
-                        {item.name}
+                        {t(`nav.${item.id}`)}
                       </NavLink>
                     ))}
+                    <div className='flex flex-1 items-center justify-end text-gray-300'>
+                      <LanguageSelector />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -83,9 +89,12 @@ const Navbar = () => {
                   aria-current={item.current ? 'page' : undefined}
                   onClick={() => handleActiveRoute(item.id)}
                 >
-                  {item.name}
+                  {t(`nav.${item.id}`)}
                 </NavLink>
               ))}
+              <div className='flex flex-1 items-center text-gray-300'>
+                <LanguageSelector />
+              </div>
             </div>
           </Disclosure.Panel>
         </>
@@ -94,4 +103,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default WithTranslation(Navbar)
