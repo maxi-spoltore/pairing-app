@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Disclosure } from '@headlessui/react'
-import { Select } from '@chakra-ui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import Logo from '../Logo'
 import LanguageSelector from '../LanguageSelector'
