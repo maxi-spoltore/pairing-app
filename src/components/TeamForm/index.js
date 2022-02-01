@@ -21,6 +21,8 @@ const TeamForm = () => {
   }
 
   const handleSubmit = e => {
+    if (!e.target.value) return;
+
     if (e.key === 'Enter') {
       const newMember = {
         id: uuidv4(),
