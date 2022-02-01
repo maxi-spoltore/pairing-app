@@ -2,23 +2,29 @@ import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { sortMembers } from '../../utils'
 import { Button } from "@chakra-ui/react"
+import ReactTooltip from 'react-tooltip'
 import { useTeamState } from '../TeamContext'
 import GoBack from '../GoBack'
 
 const TeamList = ({render}) => {
   const { members } = useTeamState()
   const [loading, setLoading] = useState(false);
-  const [sortedMembers, setSortedMembers] = useState([])
+  const [sortedMembers, setSortedMembers] = useState([]);
+  const [sortError, setSortError] = useState(false);
 
   const handleSortMembers = () => {
-    if (members.length < 2) return;
+    if (members.length < 2) {
+      setSortError(true);
+      return;
+    }
     setLoading(true)
     setSortedMembers([])
     const newSortedMembers = sortMembers(members)
     
     return setTimeout(() => { 
       setSortedMembers(newSortedMembers);
-      setLoading(false)
+      setLoading(false);
+      setSortError(false);
     }, 2500)
   }
 
@@ -33,8 +39,16 @@ const TeamList = ({render}) => {
               isLoading={loading}
               colorScheme="green"
               width='300px'
+              data-tip="Debe haber al menos 2 personas anotadas."
               onClick={handleSortMembers}
             >
+            {sortError && (
+              <ReactTooltip
+                place="top"
+                type="error"
+                effect="solid"
+              />
+            )}
               {!!sortedMembers && !!sortedMembers.length ? 'Sortear otra vez' : 'Sortear'}
             </Button>
           </div>
