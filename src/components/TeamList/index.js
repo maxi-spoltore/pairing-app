@@ -11,6 +11,7 @@ const TeamList = ({render}) => {
   const [sortedMembers, setSortedMembers] = useState([])
 
   const handleSortMembers = () => {
+    if (members.length < 2) return;
     setLoading(true)
     setSortedMembers([])
     const newSortedMembers = sortMembers(members)
